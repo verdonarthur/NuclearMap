@@ -1,0 +1,32 @@
+{
+  "name": "nuclearmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preview": "live-server dist/",
+    "build": "webpack",
+    "watch": "webpack --mode=development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/verdonarthur/NuclearMap.git"
+  },
+  "author": "Arthur Verdon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/verdonarthur/NuclearMap/issues"
+  },
+  "homepage": "https://github.com/verdonarthur/NuclearMap#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0"
+  },
+  "dependencies": {
+    "ol": "^5.3.0"
+  }
+}
