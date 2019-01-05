@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-let PORT = process.env.PORT || '8080'
+let PORT = process.env.PORT || 8080;
 let URL_LOCAL_SERVER = JSON.stringify('http://localhost:'+ PORT)
 
 module.exports = {
