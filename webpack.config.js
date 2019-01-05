@@ -3,6 +3,8 @@ const webpack = require('webpack');
 
 let PORT = process.env.PORT || 8080;
 let URL_LOCAL_SERVER = JSON.stringify('http://localhost:'+ PORT)
+console.log(PORT)
+console.log(process.env.PORT)
 
 module.exports = {
   mode: 'production',
