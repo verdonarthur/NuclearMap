@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 body{
     border:0;
     width: 100%;
     height: 100%;
     margin:0;
-
+    font-family: 'Montserrat', sans-serif;
+    color:black;
 }
 
 #map{
@@ -16,4 +18,47 @@ body{
     bottom: 1.5em;
     left:.5em;
     
+}
+
+#popup{
+    width: 15em;
+    background: white;
+    border-radius: 10px;
+    padding: 8%;
+}
+
+.nuclearcentral-popup h3, .nuclearaccidents-popup h3{
+    border-bottom: 1px solid lightgrey;
+    text-transform: capitalize;
+    margin:0;
+}
+
+.nuclearcentral-popup .generalInfo, .nuclearaccidents-popup .generalInfo{
+    display:flex;
+    flex-flow: column;
+    justify-content: center;
+    margin: 3px 0 1px 0;
+}
+
+.nuclearcentral-popup .generalInfo *, .nuclearaccidents-popup .generalInfo *{
+    margin-bottom: 5px;
+}
+
+.nuclearcentral-popup .energyInfo{
+    display:flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border-top:1px solid lightgrey;
+    margin: 3px 0 1px 0;
+}
+.nuclearcentral-popup .electricity{
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.nuclearaccidents-popup .ineaDescription{
+    border-top:1px solid lightgrey;
+    margin: 3px 0 1px 0;
+    font-size:0.8em;
 }

@@ -7,6 +7,10 @@ const osmtogeojson = require('osmtogeojson')
 const port = process.env.PORT || 8080;
 const app = express();
 
+/**
+ * Useful function to create folder if nonexistent
+ * @param {} filePath 
+ */
 function ensureDirectoryExistence(filePath) {
   var dirname = path.dirname(filePath);
   if (fs.existsSync(dirname)) {
@@ -19,9 +23,12 @@ function ensureDirectoryExistence(filePath) {
 app.use(express.static(__dirname));
 app.use(express.static(__dirname + '/dist'));
 
+/**
+ * Give the all the nuclear central in geojson
+ */
 app.get('/nuclearcentral', (req, res) => {
 
-  let filepath = __dirname + '/.cache/nuclearcentralmap.geojson';
+  let filepath = __dirname + '/data/nuclearcentralmap.geojson';
 
   if (fs.existsSync(filepath)) {
     fs.readFile(filepath, (err, data) => {
@@ -50,6 +57,26 @@ app.get('/nuclearcentral', (req, res) => {
       })
 
     })
+  }
+});
+
+/**
+ * Give all the nuclear accidents in geojson
+ */
+app.get('/nuclearaccidents', (req, res) => {
+
+  let filepath = __dirname + '/data/DataNuclearAccidents.geojson';
+
+  if (fs.existsSync(filepath)) {
+    fs.readFile(filepath, (err, data) => {
+      if (err)
+        res.send(err)
+        
+      res.send(JSON.parse(data))
+    })
+
+  } else {
+    res.send(JSON.parse("{}"))
   }
 });
 

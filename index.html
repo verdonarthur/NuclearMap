@@ -13,6 +13,29 @@
 
 <body>
     <div id="map"></div>
+    <div id="popup" class="ol-popup">
+        <div id="popup-content">
+            <div class="tmp-nuclearcentral-popup nuclearcentral-popup">
+                <h3>Name</h3>
+                <p class='generalInfo'>
+                    <label class='operator'></label><br>
+                    <span><label class='startDate'></label> à <label class='endDate'>aujourd'hui</label></span>
+                </p>
+                <p class="energyInfo">
+                    <label class='type'></label><label class='electricity'></label>
+                </p>
+            </div>
+            <div class="tmp-nuclearaccidents-popup nuclearaccidents-popup">
+                <h3>Name</h3>
+                <p class='generalInfo'>
+                    <label class='lvlInea'></label><br>
+                    <label class='year'></label>
+                </p>
+                <p class="ineaDescription"></p>
+            </div>
+        </div>
+    </div>
+
     <script src="dist/bundle.js"></script>
 </body>
 

@@ -1,6 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 
+let PORT = process.env.PORT || '8080'
+let URL_LOCAL_SERVER = JSON.stringify('http://localhost:'+ PORT)
+
 module.exports = {
   mode: 'production',
   entry: ['babel-polyfill', './src/index.js'],
@@ -25,5 +28,14 @@ module.exports = {
       path.resolve('./src'),
       path.resolve('./node_modules')
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
+    new webpack.DefinePlugin({
+      'URL_LOCAL_SERVER': URL_LOCAL_SERVER
+  })
+  ]
 };

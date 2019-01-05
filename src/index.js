@@ -1,55 +1,67 @@
 import { Map, View } from 'ol';
-import { HEREMAP_LAYER_SAT, HEREMAP_LAYER_ROAD, ChangeLayerControl } from './heremap'
-import { defaults as defaultControls } from 'ol/control'
-
-import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
-import { bbox as bboxStrategy } from 'ol/loadingstrategy';
-import { transformExtent } from 'ol/proj';
-import VectorSource from 'ol/source/Vector';
+import { defaults as defaultControls } from 'ol/control';
 import GeoJSON from 'ol/format/GeoJSON';
-import osmtogeojson from 'osmtogeojson'
-import { getNuclearFeature } from './overpassapi'
+import { Vector as VectorLayer } from 'ol/layer';
+import VectorSource from 'ol/source/Vector';
+import { ChangeLayerControl, HEREMAP_LAYER_ROAD, HEREMAP_LAYER_SAT } from './heremap';
+import { addMapInteraction, OVERLAY } from './interaction';
+import { getNuclearAccidentsGEOJSON, getNuclearCentralGEOJSON, nuclearAccidentsStyle, nuclearCentralStyle } from './nuclearData';
 
-import { Circle as CircleStyle, Fill, Stroke, Style } from 'ol/style.js';
-
-var styleFunction = function (feature) {
-    return new Style({
-        image: new CircleStyle({
-            radius: 5,
-            fill: new Fill({
-                color: 'red'
-              }),
-            stroke: new Stroke({ color: 'red', width: 2 })
-        })
-    })
-}
-
-var map = new Map({
+/**
+ * Create the new Map
+ */
+let map = new Map({
     target: 'map',
     controls: defaultControls().extend([
         new ChangeLayerControl()
     ]),
     layers: [
         HEREMAP_LAYER_SAT,
-        HEREMAP_LAYER_ROAD
+        HEREMAP_LAYER_ROAD,
+        //accidentsHeatmap
 
     ],
     view: new View({
         center: [0, 0],
         zoom: 2
-    })
+    }),
+    overlays: [OVERLAY],
 });
 
+addMapInteraction(map)
+
+/**
+ * Load Nuclear Central
+ */
 setTimeout(async () => {
-    var vectorSource = new VectorSource({
-        features: (new GeoJSON()).readFeatures(await getNuclearFeature(), {
+    let vectorSource = new VectorSource({
+        features: (new GeoJSON()).readFeatures(await getNuclearCentralGEOJSON(), {
             featureProjection: map.getView().getProjection()
         })
     });
 
-    var vector = new VectorLayer({
+    let vector = new VectorLayer({
         source: vectorSource,
-        style: styleFunction
+        style: nuclearCentralStyle
+
+    });
+    map.addLayer(vector);
+
+}, 250);
+
+/**
+ * Load Nuclear Accidents
+ */
+setTimeout(async () => {
+    let vectorSource = new VectorSource({
+        features: (new GeoJSON()).readFeatures(await getNuclearAccidentsGEOJSON(), {
+            featureProjection: map.getView().getProjection()
+        })
+    });
+
+    let vector = new VectorLayer({
+        source: vectorSource,
+        style: nuclearAccidentsStyle
 
     });
     map.addLayer(vector);
