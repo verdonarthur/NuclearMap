@@ -24,7 +24,7 @@ export const getNuclearCentralGEOJSON = async () =>{
 
 export const getNuclearAccidentsGEOJSON = async()=>{
     try{
-        let response = await fetch(URL_LOCAL_SERVER+"/nuclearaccidents", {
+        let response = await fetch(window.location.origin+"/nuclearaccidents", {
             method:"GET"
         })
         console.log(response)
