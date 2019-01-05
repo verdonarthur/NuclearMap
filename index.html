@@ -7,31 +7,88 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nuclear MAP</title>
 
+    <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
     <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" type="text/css">
     <link rel="stylesheet" href="css/map.css" type="text/css">
 </head>
 
 <body>
-    <div id="map"></div>
-    <div id="popup" class="ol-popup">
-        <div id="popup-content">
-            <div class="tmp-nuclearcentral-popup nuclearcentral-popup">
-                <h3>Name</h3>
-                <p class='generalInfo'>
-                    <label class='operator'></label><br>
-                    <span><label class='startDate'></label> à <label class='endDate'>aujourd'hui</label></span>
-                </p>
-                <p class="energyInfo">
-                    <label class='type'></label><label class='electricity'></label>
-                </p>
+    <header class="navbar">
+        <section class="navbar-section">
+            <a href="#" class="btn btn-link"><b>Projet Carte Nucléaire</b></a>
+        </section>
+        <section class="navbar-center">
+            <!-- centered logo or brand -->
+        </section>
+        <section class="navbar-section">
+            <a href="https://github.com/verdonarthur/NuclearMap" class="btn btn-link"> <i class="fab fa-github"></i>
+                GitHub</a>
+        </section>
+    </header>
+
+    <div class="container">
+        <div class="columns ">
+            <div class="column col-9 col-sm-12">
+                <div id="map"></div>
+                <div id="popup" class="ol-popup">
+                    <div id="popup-content">
+                        <div class="tmp-nuclearcentral-popup nuclearcentral-popup">
+                            <h3>Name</h3>
+                            <p class='generalInfo'>
+                                <label class='operator'></label><br>
+                                <span><label class='startDate'></label> à <label class='endDate'>aujourd'hui</label></span>
+                            </p>
+                            <p class="energyInfo">
+                                <label class='type'></label><label class='electricity'></label>
+                            </p>
+                        </div>
+                        <div class="tmp-nuclearaccidents-popup nuclearaccidents-popup">
+                            <h3>Name</h3>
+                            <p class='generalInfo'>
+                                <label class='lvlInea'></label><br>
+                                <label class='year'></label>
+                            </p>
+                            <p class="ineaDescription"></p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="tmp-nuclearaccidents-popup nuclearaccidents-popup">
-                <h3>Name</h3>
-                <p class='generalInfo'>
-                    <label class='lvlInea'></label><br>
-                    <label class='year'></label>
-                </p>
-                <p class="ineaDescription"></p>
+            <div class="column col-3 col-sm-12">
+                <h2>Légende</h2>
+                <div class="tile">
+                    <div class="tile-icon">
+                        <div class="example-tile-icon">
+                            <svg width="50" height="50">
+                                <circle cx="25" cy="25" r="10" stroke="red" stroke-width="4" fill="red" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tile-content">
+                        <b class="tile-title">Centrale nucéaire</b><br>
+                        <cite class="tile-subtitle">Des information sur les centrales nucléaires</cite>
+                    </div>
+                </div>
+                <div class="tile">
+                    <div class="tile-icon">
+                        <div class="example-tile-icon">
+                            <svg width="50" height="50">
+                                <circle cx="25" cy="25" r="10" stroke="blue" stroke-width="4" fill="blue" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="tile-content">
+                        <b class="tile-title">Accidents nucéaire</b><br>
+                        <cite class="tile-subtitle">Des information sur les accidents nucléaires</cite>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

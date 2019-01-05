@@ -54,10 +54,11 @@ export class ChangeLayerControl extends Control {
         let options = {}
 
         let button = document.createElement('button')
-        button.innerHTML = 'Change layer'
+        button.innerHTML = '<i class="icon icon-resize-horiz"></i>'
 
         let element = document.createElement('div')
-        element.className = 'SatteliteViewControl ol-unselectable ol-control'
+        // ol-unselectable ol-control
+        element.className = 'SatteliteViewControl ol-unselectable ol-control '
         element.appendChild(button)
 
         Control.call(this, {
