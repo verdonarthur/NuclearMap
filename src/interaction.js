@@ -46,6 +46,11 @@ selectClick.on('select', function (e) {
 
     // for simplification we get only the first element
     let slctFeature = features[0]
+    
+    // is a cluster
+    if(slctFeature.get('features')){
+        slctFeature = slctFeature.get('features')[0]
+    }
     console.log(slctFeature)
 
     // is a nuclear central

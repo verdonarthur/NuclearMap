@@ -34,7 +34,8 @@
 
     <div class="container">
         <div class="columns ">
-            <div class="column col-9 col-sm-12">
+            <div class="column col-8 col-sm-12">
+
                 <div id="map"></div>
                 <div id="popup" class="ol-popup">
                     <div id="popup-content">
@@ -60,13 +61,31 @@
                 </div>
 
             </div>
-            <div class="column col-3 col-sm-12">
+
+            <div class="divider-vert" data-content=""></div>
+
+            <div id="LegendOfTheMap" class="column col-sm-12">
                 <h2>Légende</h2>
+
+                <div class="TMP-LEGENDS tile">
+                    <div class="tile-icon">
+                        <div class="example-tile-icon">
+                            <svg width="50" height="50">
+                                <circle cx="25" cy="25" r="10" stroke="white" stroke-width="0.5" fill="red" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tile-content">
+                        <b class="tile-title"></b><br>
+                        <cite class="tile-subtitle"></cite>
+                    </div>
+                </div>
+
                 <div class="tile">
                     <div class="tile-icon">
                         <div class="example-tile-icon">
                             <svg width="50" height="50">
-                                <circle cx="25" cy="25" r="10" stroke="red" stroke-width="4" fill="red" />
+                                <circle cx="25" cy="25" r="10" stroke="red" stroke-width="0.5" fill="red" />
                             </svg>
                         </div>
                     </div>
@@ -75,24 +94,55 @@
                         <cite class="tile-subtitle">Des information sur les centrales nucléaires</cite>
                     </div>
                 </div>
+
                 <div class="tile">
                     <div class="tile-icon">
                         <div class="example-tile-icon">
                             <svg width="50" height="50">
-                                <circle cx="25" cy="25" r="10" stroke="blue" stroke-width="4" fill="blue" />
+                                <circle cx="25" cy="25" r="10" stroke="white" stroke-width="0.5" fill="green" />
                             </svg>
                         </div>
                     </div>
 
                     <div class="tile-content">
-                        <b class="tile-title">Accidents nucéaire</b><br>
-                        <cite class="tile-subtitle">Des information sur les accidents nucléaires</cite>
+                        <b class="tile-title">Zone d'exclusions nucléaires en cas d'accidents</b><br>
+                        <cite class="tile-subtitle">Une zone de 30 KM autour de chaque centrale est appliquée en cas
+                            d'accident grave comme Fukushima</cite>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 
+    <div class="container">
+
+        <div class="columns">
+
+            <div class="col-2 col-sm-1"></div>
+
+            <div class="column">
+                <h2>Sources des données</h2>
+
+                <h3>Centrales nucléaires</h3>
+                <p>Les données pour les centrales nucéaires sont disponible en format GEOJSON via ce <a href="/nuclearcentral">lien</a></p>
+                <p>Vous pouvez également les retrouver via l'api <a href="https://taginfo.openstreetmap.org/tags/generator%3Asource=nuclear">OverpassAPI</a></p>
+
+                <h3>Accidents nucléaires</h3>
+                <p>Les données pour les centrales nucéaires sont disponible en format GEOJSON via ce <a href="/nuclearaccidents">lien</a></p>
+                <p>Vous pouvez également les retrouver via cette <a href="https://www.theguardian.com/news/datablog/2011/mar/14/nuclear-power-plant-accidents-list-rank#data">article</a>
+                    du Guardian</p>
+
+                <h3>Zone d'exclusions nucléaires</h3>
+                <p>Les 30 km sont calculer via l'API de <a href="https://carto.com">Carto</a></p>
+
+            </div>
+
+            <div class="col-2 col-sm-1"></div>
+
+        </div>
+    </div>
+    <!--https://www.rts.ch/info/suisse/6236159-pilules-d-iode-distribuees-a-50-km-des-centrales-calculez-votre-eloignement.html-->
     <script src="dist/bundle.js"></script>
 </body>
 

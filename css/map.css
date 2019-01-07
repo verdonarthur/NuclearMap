@@ -4,9 +4,13 @@ body{
     color:black;
 }
 
+header.navbar{
+    margin-bottom:10px;
+}
 
-
-
+.container{
+    margin-bottom: 30px;
+}
 
 
 
