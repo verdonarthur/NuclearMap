@@ -8,7 +8,7 @@ var mapConfig = {
             'cartocss_version': '2.1.1',
             'cartocss': `
                 #layer {
-                    polygon-fill: #00ff00;
+                    polygon-fill: #0000ff;
                     polygon-opacity: 0.1;
                 }
                 #layer::outline {
@@ -36,5 +36,6 @@ var cartoDBSource = new CartoDB({
 
 
 export let NUCLEAR_EXCLUSION_AREA = new TileLayer({
+    title: 'Nuclear Exclusion Area',
     source: cartoDBSource
 })

@@ -45,7 +45,6 @@ let map = new Map({
     overlays: [OVERLAY],
 });
 
-addMapInteraction(map)
 
 /**
  * Load Nuclear Central
@@ -64,12 +63,16 @@ setTimeout(async () => {
     });
 
     let vector = new VectorLayer({
+        title: 'Nuclear Central',
         source: clusterSource,
         style: (feature, resolution) => { return nuclearCentralClusterStyle(feature, resolution, vector) }
 
     });
 
     map.addLayer(vector);
+
+    
+    addMapInteraction(map)
 
 }, 100);
 
@@ -84,6 +87,7 @@ setTimeout(async () => {
     });
 
     let vector = new VectorLayer({
+        title: 'Nuclear Accidents',
         source: vectorSource,
         style: nuclearAccidentsStyle
 

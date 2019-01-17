@@ -1,12 +1,13 @@
-import { click } from 'ol/events/condition.js';
-import Select from 'ol/interaction/Select';
-import Overlay from 'ol/Overlay';
+import { click } from 'ol/events/condition.js'
+import Select from 'ol/interaction/Select'
+import Overlay from 'ol/Overlay'
+import LayerSwitcher from 'ol-layerswitcher';
 
 /**
 * Elements that make up the popup.
 */
-let container = document.getElementById('popup');
-let content = document.getElementById('popup-content');
+let container = document.getElementById('popup')
+let content = document.getElementById('popup-content')
 
 /**
  * Clone template
@@ -28,27 +29,27 @@ export const OVERLAY = new Overlay({
     autoPanAnimation: {
         duration: 250
     }
-});
+})
 
 let selectClick = new Select({
     condition: click
 })
 
 selectClick.on('select', function (e) {
-    if (!e.selected[0]){        
-        OVERLAY.setPosition(undefined);
+    if (!e.selected[0]) {
+        OVERLAY.setPosition(undefined)
         return
     }
 
     let features = e.selected.map((feature) => {
-        return feature;
-    });
+        return feature
+    })
 
     // for simplification we get only the first element
     let slctFeature = features[0]
-    
+
     // is a cluster
-    if(slctFeature.get('features')){
+    if (slctFeature.get('features')) {
         slctFeature = slctFeature.get('features')[0]
     }
     console.log(slctFeature)
@@ -71,21 +72,25 @@ selectClick.on('select', function (e) {
     // is a nuclear accidents
     if (slctFeature.get('iaea_description')) {
         let nuclearaccidentsDiv = TMP_NUCLEAR_ACCIDENTS.clone()
-        
+
         $('h3', nuclearaccidentsDiv).text(slctFeature.get('incident') ? slctFeature.get('incident') : 'Anonyme')
-        $('.lvlInea', nuclearaccidentsDiv).text(slctFeature.get('ines_level') ? slctFeature.get('ines_level')+' sur 7' : '- sur 7')
+        $('.lvlInea', nuclearaccidentsDiv).text(slctFeature.get('ines_level') ? slctFeature.get('ines_level') + ' sur 7' : '- sur 7')
         $('.year', nuclearaccidentsDiv).text(slctFeature.get('year') ? slctFeature.get('year') : 'Date inconnue')
         $('.ineaDescription', nuclearaccidentsDiv).text(slctFeature.get('iaea_description') ? slctFeature.get('iaea_description') : '-')
-        
+
         content.innerHTML = ''
         nuclearaccidentsDiv.appendTo(content)
     }
 
 
-    OVERLAY.setPosition(e.selected[0].getGeometry().getCoordinates());
-});
+    OVERLAY.setPosition(e.selected[0].getGeometry().getCoordinates())
+})
 
 
 export const addMapInteraction = (map) => {
-    map.addInteraction(selectClick);
+    
+    map.addInteraction(selectClick)
+    map.addControl(new LayerSwitcher({
+        tipLabel: 'Légende' // Optional label for button
+    }))
 }

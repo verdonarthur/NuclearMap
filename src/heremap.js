@@ -33,6 +33,8 @@ function createUrl(tpl, layerDesc) {
 }
 
 export const HEREMAP_LAYER_SAT = new TileLayer({
+    type: 'base',
+    title: 'Satellite',
     preload: Infinity,
     source: new Source.XYZ({
         url: createUrl(HERE_MAP_URL, hereMapSatLayer)
@@ -40,6 +42,8 @@ export const HEREMAP_LAYER_SAT = new TileLayer({
 })
 
 export const HEREMAP_LAYER_ROAD = new TileLayer({
+    type: 'base',
+    title: 'Route',
     preload: Infinity,
     visible:false,
     source: new Source.XYZ({
@@ -54,7 +58,7 @@ export class ChangeLayerControl extends Control {
         let options = {}
 
         let button = document.createElement('button')
-        button.innerHTML = '<i class="icon icon-resize-horiz"></i>'
+        button.innerHTML = '<i class="far fa-map"></i>'
 
         let element = document.createElement('div')
         // ol-unselectable ol-control
