@@ -36,6 +36,7 @@ export const HEREMAP_LAYER_SAT = new TileLayer({
     type: 'base',
     title: 'Satellite',
     preload: Infinity,
+    visible:false,
     source: new Source.XYZ({
         url: createUrl(HERE_MAP_URL, hereMapSatLayer)
     })
@@ -45,7 +46,6 @@ export const HEREMAP_LAYER_ROAD = new TileLayer({
     type: 'base',
     title: 'Route',
     preload: Infinity,
-    visible:false,
     source: new Source.XYZ({
         url: createUrl(HERE_MAP_URL, hereMapRoadLayer) 
     })

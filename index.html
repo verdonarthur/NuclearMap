@@ -22,10 +22,10 @@
 <body>
     <header class="navbar">
         <section class="navbar-section">
-            <a href="#" class="btn btn-link"><b>Projet Carte Nucléaire</b></a>
+            <a href="#" class="btn btn-link">Projet Carte Nucléaire</a>
         </section>
         <section class="navbar-center">
-            <!-- centered logo or brand -->
+            <i class="fas fa-radiation"></i>
         </section>
         <section class="navbar-section">
             <a href="https://github.com/verdonarthur/NuclearMap" class="btn btn-link"> <i class="fab fa-github"></i>
@@ -66,6 +66,15 @@
             <div class="divider-vert" data-content=""></div>
 
             <div id="LegendOfTheMap" class="column col-sm-12">
+                <h2>Statistiques</h2>
+                <dl>
+                    <dt class="statsNumber"><i class="fas fa-industry"></i><span id="nbrActiveNuclearCentral">0</span></dt>                    
+                    <dd class="statsNumber">Nombre de centrale nucléaire active</dd>
+
+                    <dt class="statsNumber"><i class="fas fa-chart-area"></i><span id="areaExclusionZone">0</span></dt>                    
+                    <dd class="statsNumber">Aire total d'exclusions</dd>
+                </dl>
+
                 <h2>Légende</h2>
 
                 <div class="TMP-LEGENDS tile">

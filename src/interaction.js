@@ -35,6 +35,9 @@ let selectClick = new Select({
     condition: click
 })
 
+/**
+ * Click Interaction with the map
+ */
 selectClick.on('select', function (e) {
     if (!e.selected[0]) {
         OVERLAY.setPosition(undefined)

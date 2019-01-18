@@ -3,7 +3,7 @@ import { defaults as defaultControls } from 'ol/control';
 import GeoJSON from 'ol/format/GeoJSON';
 import { Vector as VectorLayer } from 'ol/layer';
 import { Cluster, Vector as VectorSource } from 'ol/source';
-import { NUCLEAR_EXCLUSION_AREA } from './cartodb';
+import { NUCLEAR_EXCLUSION_AREA, CartoSimpleRequest } from './cartodb';
 import { ChangeLayerControl, HEREMAP_LAYER_ROAD, HEREMAP_LAYER_SAT } from './heremap';
 import { addMapInteraction, OVERLAY } from './interaction';
 import { getNuclearAccidentsGEOJSON, getNuclearCentralGEOJSON, INES_LEVEL_COLOR, nuclearAccidentsStyle, nuclearCentralClusterStyle } from './nuclearData';
@@ -50,8 +50,10 @@ let map = new Map({
  * Load Nuclear Central
  */
 setTimeout(async () => {
+    let geojsonNuclearCentral = await getNuclearCentralGEOJSON()
+
     let vectorSource = new VectorSource({
-        features: (new GeoJSON()).readFeatures(await getNuclearCentralGEOJSON(), {
+        features: (new GeoJSON()).readFeatures(geojsonNuclearCentral, {
             featureProjection: map.getView().getProjection()
         })
     });
@@ -71,7 +73,7 @@ setTimeout(async () => {
 
     map.addLayer(vector);
 
-    
+
     addMapInteraction(map)
 
 }, 100);
@@ -95,3 +97,19 @@ setTimeout(async () => {
     map.addLayer(vector);
 
 }, 1000);
+
+/**
+ * Load Stats
+ */
+setTimeout(async () => {
+    let nbrCentralInActivity, totalExclusionArea
+
+    [nbrCentralInActivity, totalExclusionArea] = await Promise.all([CartoSimpleRequest.getNbrCentralInActivity(),
+    CartoSimpleRequest.getTotalAreaExclusionZone()])
+    
+    totalExclusionArea = Math.round(totalExclusionArea / (1000 * 1000))
+
+
+    $("#nbrActiveNuclearCentral").text(nbrCentralInActivity)
+    $("#areaExclusionZone").text(`${totalExclusionArea} Km2`)
+})
