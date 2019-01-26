@@ -7,7 +7,7 @@ The purpose of this project is to provide information on the use of nuclear ener
 
 ## System architecture
 Here is a diagram describing in a simplified way the global architecture of the system :
-
+```
 +-----------------------------------------+
 |node/ExpressJS                           |
 +-----------------------------------------+
@@ -35,7 +35,7 @@ Here is a diagram describing in a simplified way the global architecture of the 
 | Total Area of buffer zone calculation  +--------+
 |                                        |
 +----------------------------------------+
-
+```
 ## How to install
 1. clone the repo (git clone)
 2. npm i / npm install
